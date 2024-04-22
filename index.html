@@ -62,9 +62,13 @@
         </div>
 
         <div class="nav__buttons">
-          <!-- Toggle button  -->
-          <div class="nav__toggle" id="nav-toggle">
-            <i class="ri-menu-4-line"></i>
+          <i class="ri-moon-line change-theme" id="theme-button"></i>
+
+          <div class="nav__buttons">
+            <!-- Toggle button  -->
+            <div class="nav__toggle" id="nav-toggle">
+              <i class="ri-menu-4-line"></i>
+            </div>
           </div>
         </div>
       </nav>
@@ -246,39 +250,9 @@
 
               <p class="contact__message" id="contact-message"></p>
 
-              <!-- <button type="submit" class="contact__button submit__button">
+              <button type="submit" class="contact__button submit__button">
                 <i class="ri-send-plane-line"></i> Send Message
-              </button> -->
-              <a style="--clr: #7808d0" class="button" href="#">
-                <span class="button__icon-wrapper">
-                  <svg
-                    width="10"
-                    class="button__icon-svg"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 15"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                    ></path>
-                  </svg>
-
-                  <svg
-                    class="button__icon-svg button__icon-svg--copy"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="10"
-                    fill="none"
-                    viewBox="0 0 14 15"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                    ></path>
-                  </svg>
-                </span>
-                Send Message
-              </a>
+              </button>
             </form>
           </div>
         </div>
@@ -312,6 +286,9 @@
         </div>
       </div>
     </footer>
+    <!-- EMAIL JS  -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- MAIN JAVASCRIPT  -->
     <script src="script.js"></script>
   </body>
 </html>

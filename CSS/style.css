@@ -66,6 +66,7 @@ body {
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
+  transition: background-color 0.4s;
 }
 
 h1,
@@ -93,7 +94,7 @@ img {
 /* Reusable CSS classes  */
 .container {
   max-width: 1120px;
-  margin-inline: 1.5rem;
+  margin-inline: 1rem;
 }
 
 .grid {
@@ -292,7 +293,7 @@ img {
   position: absolute;
   font-size: 1.5rem;
   top: 0.8rem;
-  right: 1.5rem;
+  right: 1rem;
   cursor: pointer;
   color: var(--white-color);
 }
@@ -312,8 +313,9 @@ img {
 }
 
 /* Theme  */
-/* .nav__buttons {
+.nav__buttons {
   display: flex;
+  justify-content: end;
   align-items: center;
   column-gap: 1rem;
 }
@@ -323,8 +325,117 @@ img {
   color: var(--title-color);
   cursor: pointer;
   transition: color 0.3s;
-} */
+}
 
+/* DARK THEME  */
+body.dark-theme {
+  --first-color: hsl(14, 80%, 50%);
+  --black-color: #fff;
+  --black-color-light: hsl(0, 0%, 30%);
+  --title-color: hsl(0, 0%, 95%);
+  --text-color: hsl(0, 0%, 70%);
+  --body-color: hsl(0, 0%, 8%);
+  --container-color: hsl(0, 0%, 12%);
+
+  .submit__button {
+    color: #000;
+  }
+
+  .submit__button:hover {
+    color: #fff;
+  }
+
+  .nav__toggle {
+    color: #000;
+  }
+
+  .nav__logo-circle {
+    color: #000;
+  }
+
+  .github_box {
+    color: #fff;
+  }
+
+  .fancy {
+    border: 2px solid #fff;
+    color: #000;
+  }
+
+  .fancy::before {
+    background: #fff;
+  }
+
+  .fancy .text {
+    color: #fff;
+  }
+
+  .fancy .top-key {
+    background: #000;
+  }
+
+  .fancy .bottom-key-1 {
+    background: #000;
+  }
+
+  .fancy .bottom-key-2 {
+    background: #000;
+  }
+
+  .fancy:hover {
+    background: #fff;
+  }
+
+  .fancy:hover::before {
+    width: 0.9375rem;
+    background: black;
+  }
+
+  .fancy:hover .text {
+    color: #000;
+    padding-left: 1.5em;
+  }
+
+  .fancy:hover .top-key {
+    left: -2px;
+    width: 0px;
+  }
+
+  .fancy:hover .bottom-key-1,
+  .fancy:hover .bottom-key-2 {
+    right: 0;
+    width: 0;
+  }
+}
+
+.dark-theme .shadow-header {
+  box-shadow: 0 1px 12px hsla(0, 0%, 0%, 0.6);
+}
+
+.dark-theme .section__title-1::after,
+.dark-theme .section__title-2::after {
+  background-color: hsla(14, 70%, 50%, 0.2);
+}
+
+.dark-theme :is(.home__arrow, .home__line, .about__line) {
+  filter: none;
+}
+
+.dark-theme :is(.contact__mail, .contact__input, .contact__label) {
+  background-color: var(--container-color);
+}
+
+.dark-theme::-webkit-scrollbar {
+  background-color: hsl(0, 0%, 20%);
+}
+
+.dark-theme::-webkit-scrollbar-thumb {
+  background-color: hsl(0, 0%, 30%);
+}
+
+.dark-theme::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(0, 0%, 40%);
+}
 /* HOME SECTION  */
 .home__container {
   padding-top: 1.4rem;
@@ -341,7 +452,7 @@ img {
 }
 
 .home__image {
-  width: 225px;
+  width: 245px;
 }
 
 .home__img {
@@ -460,7 +571,7 @@ img {
 }
 
 .about__image {
-  width: 225px;
+  width: 245px;
 }
 
 .about__img {
@@ -487,7 +598,7 @@ img {
 
 .about__profile .geometric-box {
   top: 1.5rem;
-  left: 15.6rem;
+  left: 16.6rem;
   right: -2.8rem;
 }
 
@@ -639,7 +750,6 @@ img {
 }
 
 /* CONTACT SECTION  */
-/* ====== Contact Page  ====== */
 .contact {
   padding-bottom: 0;
 }
@@ -766,61 +876,17 @@ img {
   padding-top: 1rem;
 }
 
-.button {
-  line-height: 1;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  background-color: var(--white-color);
+.submit__button {
   color: var(--black-color);
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  padding-left: 20px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: 0.3s;
-  outline: 2px solid var(--body-color);
+  outline: 2px var(--white-color) solid;
+  padding: 10px 35px;
+  transition: 400ms;
+  cursor: pointer;
 }
 
-.button__icon-wrapper {
-  flex-shrink: 0;
-  width: 25px;
-  height: 25px;
-  position: relative;
+.submit__button:hover {
   color: var(--white-color);
-  background-color: var(--black-color);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-}
-
-.button:hover {
-  background-color: transparent;
-  color: var(--body-color);
-}
-
-.button:hover .button__icon-wrapper {
-  color: var(--black-color);
-  background-color: var(--body-color);
-}
-
-.button__icon-svg--copy {
-  position: absolute;
-  transform: translate(-150%, 150%);
-}
-
-.button:hover .button__icon-svg:first-child {
-  transition: transform 0.3s ease-in-out;
-  transform: translate(150%, -150%);
-}
-
-.button:hover .button__icon-svg--copy {
-  transition: transform 0.3s ease-in-out 0.1s;
-  transform: translate(0);
+  background: transparent;
 }
 /* Opacity placeholder  */
 .contact__input:focus::placeholder {
@@ -829,7 +895,7 @@ img {
 
 .contact__message {
   color: var(--white-color);
-  font-size: var(--small-font-size);
+  font-size: var(--font-medium);
   position: absolute;
   bottom: -1.6rem;
   left: 0;

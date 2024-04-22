@@ -37,3 +37,69 @@ let shadowHeader = () => {
     : header.classList.remove("shadow-header");
 };
 window.addEventListener("scroll", shadowHeader);
+
+// EMAIL SEND
+let contactForm = document.getElementById("contact-form"),
+  contactMessage = document.getElementById("contact-message");
+
+let sendEmail = (e) => {
+  e.preventDefault();
+
+  // serviceID - templateID - #form - publickey
+  emailjs
+    .sendForm(
+      "service_nkxgkrk",
+      "template_ht7a9qw",
+      "#contact-form",
+      "D8v7XjWwCsn6QuUAZ"
+    )
+    .then(
+      () => {
+        // Show sent message
+        contactMessage.textContent = "Message sent successfully";
+
+        // Remove message after 5 seconds
+        setTimeout(() => {
+          contactMessage.textContent = "";
+        }, 5000);
+
+        // Clear input fields
+        contactForm.reset();
+      },
+      () => {
+        // Show error message
+        contactMessage.textContent = "Message not sent (service error)";
+      }
+    );
+};
+contactForm.addEventListener("submit", sendEmail);
+
+// DARK LIGHT THEME
+let themeButton = document.getElementById("theme-button");
+let darkTheme = "dark-theme";
+let iconTheme = "ri-sun-line";
+
+let selectedTheme = localStorage.getItem("selected-theme");
+let selectedIcon = localStorage.getItem("selected-icon");
+
+let getCurrentTheme = () =>
+  document.body.classList.contains(darkTheme) ? "dark" : "light";
+let getCurrentIcon = () =>
+  themeButton.classList.contains(iconTheme) ? "ri-moon-line" : "ri-sun-line";
+
+if (selectedTheme) {
+  document.body.classList[selectedTheme === "dark" ? "add" : "remove"](
+    darkTheme
+  );
+  themeButton.classList[selectedIcon === "ri-moon-line" ? "add" : "remove"](
+    iconTheme
+  );
+}
+
+themeButton.addEventListener("click", () => {
+  document.body.classList.toggle(darkTheme);
+  themeButton.classList.toggle(iconTheme);
+
+  localStorage.setItem("selected-theme", getCurrentTheme());
+  localStorage.setItem("selected-icon", getCurrentIcon());
+});
