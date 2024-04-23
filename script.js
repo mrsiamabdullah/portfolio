@@ -38,6 +38,29 @@ let shadowHeader = () => {
 };
 window.addEventListener("scroll", shadowHeader);
 
+// SCROLL SECTIONS ACTIVE LINK
+let sections = document.querySelectorAll("section[id]");
+
+let scrollActive = () => {
+  let scrollDown = window.scrollY;
+
+  sections.forEach((current) => {
+    let sectionHeight = current.offsetHeight,
+      sectionTop = current.offsetTop - 58,
+      sectionId = current.getAttribute("id"),
+      sectionsClass = document.querySelector(
+        ".nav__menu a[href*=" + sectionId + "]"
+      );
+
+    if (scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight) {
+      sectionsClass.classList.add("active-link");
+    } else {
+      sectionsClass.classList.remove("active-link");
+    }
+  });
+};
+window.addEventListener("scroll", scrollActive);
+
 // EMAIL SEND
 let contactForm = document.getElementById("contact-form"),
   contactMessage = document.getElementById("contact-message");
